@@ -243,7 +243,7 @@ T& LinkedList<T>::at(std::size_t index) {
   		current_ = head;
 		for (int i = 0; i < index-1; i++) {
 		    current_ = current_->next();
-	    }
+		}
 		return current_->data();
 	}
 }
