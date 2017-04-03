@@ -115,7 +115,7 @@ void LinkedList<T>::push_front(const T& data) {
 	first_ = new Node(data, head);
 	head = first_;
 	size_++;
-	}
+}
 /**
  * Removes the first element.
  * \return The first element of type T.
