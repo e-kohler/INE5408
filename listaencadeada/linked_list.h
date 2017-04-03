@@ -240,7 +240,7 @@ T& LinkedList<T>::at(std::size_t index) {
   	    current_ = head;
   	    return current_->data();
   	} else {
-  	    current_ = head;
+  		current_ = head;
 		for (int i = 0; i < index-2; i++) {
 		    current_ = current_->next();
 	    }
@@ -257,10 +257,10 @@ std::size_t LinkedList<T>::find(const T& data) const {
 	std::size_t index = size_+1;
 	for (std::size_t i = 0; i < size_+1; i++) {
 		if (current_->data() == data) {
-		    index = i;
-		    break;
+			index = i;
+			break;
 		} else {
-		    current_ = current_->next();
+			current_ = current_->next();
 		}
 	}
 	return index;
