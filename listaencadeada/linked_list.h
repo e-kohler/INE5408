@@ -14,67 +14,67 @@ template<typename T>
 class LinkedList {
  public:
  	LinkedList();
-    ~LinkedList();
-    void clear();
-    void push_back(const T& data);
-    void push_front(const T& data);
-    void insert(const T& data, std::size_t index);
-    void insert_sorted(const T& data);
-    T& at(std::size_t index);
-    T pop(std::size_t index);
-    T pop_back();
-    T pop_front();
-    void remove(const T& data);
-    bool empty() const;
-    bool contains(const T& data) const;
-    std::size_t find(const T& data) const;
-    std::size_t size() const;
+ 	~LinkedList();
+ 	void clear();
+ 	void push_back(const T& data);
+ 	void push_front(const T& data);
+ 	void insert(const T& data, std::size_t index);
+ 	void insert_sorted(const T& data);
+ 	T& at(std::size_t index);
+ 	T pop(std::size_t index);
+ 	T pop_back();
+ 	T pop_front();
+ 	void remove(const T& data);
+ 	bool empty() const;
+ 	bool contains(const T& data) const;
+ 	std::size_t find(const T& data) const;
+ 	std::size_t size() const;
 
  private:
-    class Node {
+ 	class Node {
      public:
-        explicit Node(const T& data):
-            data_{data}
+     	explicit Node(const T& data):
+    	    data_{data}
         {}
 
-        Node(const T& data, Node* next):
-            data_{data},
-            next_{next}
+     	Node(const T& data, Node* next):
+        	data_{data},
+        	next_{next}
         {}
 
-        T& data() {
-            return data_;
+    	T& data() {
+        	return data_;
         }
 
-        const T& data() const {
-            return data_;
+     	const T& data() const {
+     		return data_;
         }
 
-        Node* next() {
-            return next_;
+    	Node* next() {
+      		return next_;
         }
 
         const Node* next() const {
-            return next_;
+        	return next_;
         }
 
         void next(Node* node) {
-            next_ = node;
+        	next_ = node;
         }
      private:
-        T data_;
-        Node* next_{nullptr};
+     	T data_;
+     	Node* next_{nullptr};
     };
 
-    Node* end() {
-        auto it = head;
-        for (auto i = 1u; i < size(); ++i) {
-            it = it->next();
-        }
-        return it;
-    }
-    Node* head{nullptr};
-    std::size_t size_{0u};
+	Node* end() {
+    	auto it = head;
+    	for (auto i = 1u; i < size(); ++i) {
+        	it = it->next();
+    	}
+    	return it;
+	}
+	Node* head{nullptr};
+	std::size_t size_{0u};
 };
 /**
  * Constructor. Sets the attributes values.
@@ -89,7 +89,7 @@ LinkedList<T>::LinkedList() {
  */
 template<typename T>
 LinkedList<T>::~LinkedList() {
-    clear();
+	clear();
 }
 /**
  * Clears the list.
