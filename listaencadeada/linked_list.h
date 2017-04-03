@@ -13,7 +13,7 @@ namespace structures {
 template<typename T>
 class LinkedList {
  public:
-    LinkedList();
+ 	LinkedList();
     ~LinkedList();
     void clear();
     void push_back(const T& data);
