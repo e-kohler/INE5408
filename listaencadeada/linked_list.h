@@ -241,10 +241,10 @@ T& LinkedList<T>::at(std::size_t index) {
   	    return current_->data();
   	} else {
   		current_ = head;
-		for (int i = 0; i < index-2; i++) {
+		for (int i = 0; i < index-1; i++) {
 		    current_ = current_->next();
 	    }
-		return (current_->next())->data();
+		return current_->data();
 	}
 }
 /**
@@ -255,11 +255,11 @@ template<typename T>
 std::size_t LinkedList<T>::find(const T& data) const {
 	Node* current_ = head;
 	std::size_t index = size_+1;
-	for (std::size_t i = 0; i < size_+1; i++) {
+	for (std::size_t i = 1; i < size_+1; i++) {
 		if (current_->data() == data) {
 			index = i;
 			break;
-		} else {
+		} else if (i != size_) {
 			current_ = current_->next();
 		}
 	}
