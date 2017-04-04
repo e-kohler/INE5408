@@ -220,6 +220,7 @@ void LinkedList<T>::push_back(const T& data) {
 		prev_ = prev_->next();
 	}
 	prev_->next(input_);
+	size_++;
 }
 /**
  * Removes the last element.
