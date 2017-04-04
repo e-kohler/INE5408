@@ -142,7 +142,7 @@ template<typename T>
 void LinkedList<T>::insert(const T& data, std::size_t index) {
 	Node* input_;
 	Node* prev_;
-	if (index > size()) {
+	if (index > size()+1) {
 		throw std::out_of_range("Index inválido");
 	} else if (index == 1) {
 		return push_front(data);
@@ -168,7 +168,7 @@ T LinkedList<T>::pop(std::size_t index) {
 	Node* prev_;
 	if (empty()) {
 		throw std::out_of_range("Lista vazia");
-	} else if (index > size_) {
+	} else if (index > size_+1) {
 		throw std::out_of_range("Parâmetro inválido");
 	} else if (index == 1) {
 		return pop_front();
@@ -214,13 +214,7 @@ void LinkedList<T>::insert_sorted(const T& data) {
  */
 template<typename T>
 void LinkedList<T>::push_back(const T& data) {
-	Node* input_ = new Node(data, nullptr);
-	Node* prev_ = head;
-	for(int i = 1; i < size_; i++) {
-		prev_ = prev_->next();
-	}
-	prev_->next(input_);
-	size_++;
+	insert(size_+1)
 }
 /**
  * Removes the last element.
