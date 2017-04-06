@@ -135,9 +135,9 @@ template <typename T>
 void LinkedList<T>::insert(const T& data, std::size_t index) {
   Node* input_;
   Node* prev_;
-  if (index > size() + 1) {
+  if (index > size()) {
     throw std::out_of_range("Index inválido");
-  } else if (index == 1) {
+  } else if (index == 0) {
     return push_front(data);
   } else {
     input_ = new Node(data);
@@ -145,7 +145,7 @@ void LinkedList<T>::insert(const T& data, std::size_t index) {
       throw std::out_of_range("Lista cheia.");
     }
     prev_ = head;
-    for (int i = 0; i < index - 2; i++) {
+    for (int i = 0; i < index - 1; i++) {
       prev_ = prev_->next();
     }
     input_->next(prev_->next());
@@ -164,13 +164,13 @@ T LinkedList<T>::pop(std::size_t index) {
   Node* prev_;
   if (empty()) {
     throw std::out_of_range("Lista vazia");
-  } else if (index > size()) {
+  } else if (index > size() - 1) {
     throw std::out_of_range("Parâmetro inválido");
-  } else if (index == 1) {
+  } else if (index == 0) {
     return pop_front();
   } else {
     prev_ = head;
-    for (int i = 0; i < index - 2; i++) {
+    for (int i = 0; i < index - 1; i++) {
       prev_ = prev_->next();
     }
     popped_ = prev_->next();
@@ -188,12 +188,12 @@ T LinkedList<T>::pop(std::size_t index) {
 template <typename T>
 void LinkedList<T>::insert_sorted(const T& data) {
   Node* current_;
-  int pos_;
+  std::size_t pos_;
   if (empty()) {
     push_front(data);
   } else {
     current_ = head;
-    pos_ = 1;
+    pos_ = 0;
     while (current_->next() != nullptr && data > current_->data()) {
       current_ = current_->next();
       pos_++;
@@ -210,14 +210,14 @@ void LinkedList<T>::insert_sorted(const T& data) {
  */
 template <typename T>
 void LinkedList<T>::push_back(const T& data) {
-  insert(data, size() + 1);
+  insert(data, size());
 }
 /**
  * Removes the last element.
  */
 template <typename T>
 T LinkedList<T>::pop_back() {
-  return pop(size());
+  return pop(size() - 1);
 }
 /**
  * Returns a reference to the element at the specified index.
@@ -225,14 +225,14 @@ T LinkedList<T>::pop_back() {
 template <typename T>
 T& LinkedList<T>::at(std::size_t index) {
   Node* current_;
-  if (index > size()) {
+  if (index > size() - 1) {
     throw std::out_of_range("Index inválido");
-  } else if (index == 1) {
+  } else if (index == 0) {
     current_ = head;
     return current_->data();
   } else {
     current_ = head;
-    for (int i = 0; i < index - 1; i++) {
+    for (int i = 0; i < index; i++) {
       current_ = current_->next();
     }
     return current_->data();
@@ -245,8 +245,8 @@ T& LinkedList<T>::at(std::size_t index) {
 template <typename T>
 std::size_t LinkedList<T>::find(const T& data) const {
   Node* current_ = head;
-  std::size_t index = size() + 1;
-  for (std::size_t i = 1; i < size() + 1; i++) {
+  std::size_t index = size();
+  for (std::size_t i = 0; i < size(); i++) {
     if (current_->data() == data) {
       index = i;
       break;
@@ -264,7 +264,7 @@ std::size_t LinkedList<T>::find(const T& data) const {
 template <typename T>
 void LinkedList<T>::remove(const T& data) {
   std::size_t test_ = find(data);
-  if (test_ != size() + 1) {
+  if (test_ != size()) {
     pop(test_);
   }
 }
@@ -274,7 +274,7 @@ void LinkedList<T>::remove(const T& data) {
  */
 template <typename T>
 bool LinkedList<T>::contains(const T& data) const {
-  return find(data) != size() + 1;
+  return find(data) != size();
 }
 /**
  * Returns the list current size.
