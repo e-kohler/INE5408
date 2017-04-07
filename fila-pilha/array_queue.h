@@ -1,4 +1,4 @@
-// Copyright 2016 Eduardo Kohler
+// Copyright 2017 Eduardo Kohler
 
 #ifndef STRUCTURES_ARRAY_QUEUE_H
 #define STRUCTURES_ARRAY_QUEUE_H
