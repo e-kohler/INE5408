@@ -79,13 +79,11 @@ void LinkedQueue<T>::enqueue(const T& data) {
   Node* input = new Node(data, nullptr);
   if (empty()) {
     head_ = input;
-    tail_ = input;
-    size_++;
   } else {
     tail_->next(input);
-    tail_ = input;
-    size_++;
   }
+  tail_ = input;
+  size_++;
 }
 /**
  * Retira o elemento do começo da fila.
