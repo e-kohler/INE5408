@@ -256,8 +256,7 @@ std::size_t CircularList<T>::find(const T& data) const {
     if (current->data() == data) {
       index = i;
       break;
-    }
-    if (i != size()) {
+    } else {
       current = current->next();
     }
   }
