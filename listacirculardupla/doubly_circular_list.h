@@ -206,11 +206,10 @@ T DoublyCircularList<T>::pop(std::size_t index) {
  */
 template <typename T>
 void DoublyCircularList<T>::insert_sorted(const T& data) {
-  Node* current;
   if (empty()) {
     push_front(data);
   } else {
-    current = head;
+    Node* current = head;
     std::size_t pos;
     for (pos = 0; pos < size() && data > current->data(); pos++) {
       current = current->next();
@@ -237,14 +236,12 @@ T DoublyCircularList<T>::pop_back() {
  */
 template <typename T>
 T& DoublyCircularList<T>::at(std::size_t index) {
-  Node* current;
+  Node* current = head;
   if (index > size() - 1) {
     throw std::out_of_range("Index inválido");
   } else if (index == 0) {
-    current = head;
     return current->data();
   } else {
-    current = head;
     for (int i = 0; i < index; i++) {
       current = current->next();
     }
@@ -270,8 +267,7 @@ std::size_t DoublyCircularList<T>::find(const T& data) const {
     if (current->data() == data) {
       index = i;
       break;
-    }
-    if (i != size()) {
+    } else {
       current = current->next();
     }
   }
